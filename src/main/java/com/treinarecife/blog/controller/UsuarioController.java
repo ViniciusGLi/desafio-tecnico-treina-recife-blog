@@ -21,7 +21,7 @@ import com.treinarecife.blog.model.Usuario;
 import com.treinarecife.blog.repository.UsuarioRepository;
 
 @RestController
-@RequestMapping(value = "/usuarios")
+@RequestMapping(value = "/authors")
 public class UsuarioController {
 
     @Autowired
@@ -32,7 +32,7 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.findAll(paginacao));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/authors/{id}")
     public ResponseEntity<Usuario> listarClientePeloId(@PathVariable("id") Long id) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
 
@@ -48,7 +48,7 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/authors/{id}")
     public ResponseEntity<Usuario> atualizarUsuario(@PathVariable("id") Long id,
             @RequestBody Usuario usuario) {
         Optional<Usuario> usuarioExistente = usuarioRepository.findById(id);
@@ -65,7 +65,7 @@ public class UsuarioController {
 
     }
 
-      @DeleteMapping("/{id}")
+      @DeleteMapping("/authors/{id}")
     public ResponseEntity<String> deletarUsuarioPeloId(@PathVariable("id") Long id) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
 
